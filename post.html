@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZSP2WĄGROWIEC</title>
+    <link rel="icon" type="image/x-icon" href="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2022/04/xcropped-Nowe-Logo-ZS2-Final-512-32x32.png.pagespeed.ic.xA0nlNcB3A.webp">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    hashVal = (window.location.hash).replace("#","");
+    $.ajax({
+          url: "https://zsp2wagrowiec.pl/index.php?rest_route=/wp/v2/posts&include[]="+hashVal
+      })
+      .done(res => {
+       document.title = res[0].title.rendered+" | ZSP2WĄGROWIEC";
+       console.log(res);    // dla programisty, potem zostanie usuniete 
+       const tytuly = document.querySelectorAll('[id=tytul]');
+       const miniatury = document.querySelectorAll('[id=miniatura]');
+       const opis = document.querySelectorAll('[id=opis]');
+      /* const zobaczWiecej = document.querySelectorAll('[id=zobaczWiecej]');
+       const path = (document.URL).replace("aktualnosci.html","");*/
+          tytuly[0].innerHTML += res[0].title.rendered;
+          opis[0].innerHTML += res[0].content.rendered;
+          /*krotkiOpis[i].innerHTML += res[i].excerpt.rendered;
+          zobaczWiecej[i].setAttribute("href",(path+"post.html#"+(i+1)));*/
+      });
+</script>
+<style>
+  a:link{
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDisp" aria-controls="navbarDisp" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarDisp">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                ZSP2Wągrowiec
+              </a>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Wizytówka</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="aktualnosci.html">Aktualności</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://uonetplus.vulcan.net.pl/powiatwagrowiecki/" target="_blank">E-dziennik</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://77.65.52.170/" target="_blank">Platforma Moodle</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      <br>
+      <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+   <!-- <img id="miniatura" src="" alt="">-->
+    <h1 id="tytul" style="text-align: center;"></h1>
+    <style>
+      .opp p, ol, ul, li, h1, h2, h3{
+        text-align: left;
+      }
+    </style>
+    <p id="opis" class="opp"></p>
+    </div>
+    </div>
+    </div>
+
+
+    <hr>
+    <footer id="footer">
+
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+  
+            <div class="col-lg-4 col-md-6 footer-contact">
+              <h3>Adres</h3>
+              <p>
+                Zespół Szkół Ponadgimnazjalnych nr 2 im. ppłk. dr. S. Kulińskiego<br>
+                Kościuszki 49<br>
+                62-100 Wągrowiec <br><br>
+              </p>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Kontakt</h3>
+              <p>
+                <strong>Telefon:</strong> 67 262 03 47<br>
+                <strong>Email:</strong> zsz2wagr@wp.pl<br>
+              </p>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Szybki dostęp</h3>
+              <p>
+                <a href="https://uonetplus.vulcan.net.pl/powiatwagrowiecki/" target="_blank">E-dziennik</a><br>
+                <a href="https://zsp2wagrowiec.pl/cms/" target="_blank">Oficjalna strona szkoły</a><br>
+                <a href="https://www.youtube.com/@JacekHaja" target="_blank">Jacek Haja YouTube?</a><br>
+              </p>
+            </div>
+            <div class="col-lg-2 col-md-6 footer-newsletter">
+              <h4>Nasze social media:</h4>
+              <p>
+                <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="https://www.facebook.com/people/Zesp%C3%B3%C5%82-Szk%C3%B3%C5%82-nr-2-w-W%C4%85growcu/100063451487568/" target="_blank" role="button">
+                  <i class="fa-brands fa-facebook-f"></i></a>
+                  <a class="btn text-white btn-floating m-1" style="background-color: #333333;" href="https://www.tiktok.com/@zsnr_2" target="_blank" role="button">
+                  <i class="fab fa-tiktok"></i></a>
+                  <a class="btn text-white btn-floating m-1" style="background-color: #dd4b39;" href="https://www.youtube.com/channel/UCiutxe0og69YOmRjYkRg_Fw" target="_blank" role="button">
+                  <i class="fa-brands fa-youtube"></i></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+      $(document).click(function(e) {
+      if (!$(e.target).is('.panel-body')) {
+      $('.collapse').collapse('hide');	    
+    }
+  });
+    </script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ZSP2WĄGROWIEC - główna</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="icon" type="image/x-icon" href="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2022/04/xcropped-Nowe-Logo-ZS2-Final-512-32x32.png.pagespeed.ic.xA0nlNcB3A.webp">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $.ajax({
+               url: "https://zsp2wagrowiec.pl/index.php?rest_route=/wp/v2/posts&per_page=3"
+           })
+       .done(res =>{
+         console.log(res);
+         const tytuly = document.querySelectorAll('[id=artykulTytul]');
+         const teksty = document.querySelectorAll('[id=artykulTekst]');
+         const obrazki = document.querySelectorAll('[id=artykulObrazek]');
+         const miniaturaLink = document.querySelectorAll('[id=miniaturaLink]');
+        // const disp = screen.width>770;
+         const path = (document.URL).replace("index.html","");
+         for(i=0;i<3;i++){
+           tytuly[i].innerHTML += res[i].title.rendered;
+           miniaturaLink[i].setAttribute("href",(path+"post.html#"+(res[i].id)));
+            teksty[i].innerHTML += res[i].excerpt.rendered;
+           obrazki[i].setAttribute("name",res[i].id);
+         }
+       });
+   </script>
+     <script>
+      $.ajax({url:"https://zsp2wagrowiec.pl/index.php?rest_route=/wp/v2/media&per_page=15"}).done(res => {
+         const miniatury = document.querySelectorAll('[id=artykulObrazek]');
+         var ctr = 0;
+         var tolerance = 0;
+         for(i=0; i<3;i++){
+           name = miniatury[i].getAttribute("name");
+           if(name==res[ctr].post){
+             miniatury[i].src = res[ctr].media_details.sizes.full.source_url;
+             tolerance=0;
+           }
+           else if(tolerance==5){
+             tolerance=0;
+             ctr--;
+           }
+           else{
+             i--;
+             tolerance++;
+           }
+           ctr++;
+         }
+       });
+   </script>
+<style>
+  html {
+  scroll-behavior: smooth;
+}
+  .coolCard:hover {
+  transform: scale(1.1);
+}
+.coolCard {
+  transition: transform 0.2s ease;
+}
+a:link{
+  text-decoration: none;
+}
+</style>
+<style>
+  @media screen and (max-width: 540px) {
+    .btnA{
+      margin-left: 5px;
+    }
+    .btnM {
+    margin-top: 20px;
+      }
+    }
+  @media screen and (max-width: 766px){
+      .artTxt{
+      display: none;
+    }
+    }
+</style>
+  </head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDisp" aria-controls="navbarDisp" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarDisp">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                ZSP2Wągrowiec
+              </a>
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Wizytówka</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aktualnosci.html">Aktualności</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://uonetplus.vulcan.net.pl/powiatwagrowiecki/" target="_blank">E-dziennik</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://77.65.52.170/" target="_blank">Platforma Moodle</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <div class="d-flex min-vh-100" lc-helper="background" style="background:url(img/background.jpg)  center / cover no-repeat; background-color:#444; background-blend-mode: overlay; height: 100vh;">
+        <div class="align-self-center text-center text-light col-md-8 offset-md-2">
+            <div class="lc-block mb-4">
+                <div editable="rich">
+                    <h1 class="display-1 fw-bolder">ZSP2 Wągrowiec</h1>
+                </div>
+            </div>
+    
+            <div class="lc-block">
+                <div editable="rich">
+                    <p class="lead">tutaj powienien być opis szkoły</p>
+    
+                    <p class="lead">ciąg dalszy opisu
+    
+                    </p>
+                </div>
+            </div>
+            <div class="lc-block">
+                <a href="dla_mnie.html#1"><button type="button" class="btn btn-light btn-rounded btn-lg">Dla ucznia <i class="fas fa-user-graduate"></i></button></a>
+                <a href="dla_mnie.html#2"><button type="button" class="btn btnA btn-light btn-rounded btn-lg">Dla rodzica <i class="fas fa-house"></i></button></a>
+                <a href="dla_mnie.html#3"><button type="button" class="btn btnM btn-light btn-rounded btn-lg">Dla nauczyciela <i class="fas fa-chalkboard-teacher"></i></button></a>
+                <a href="https://uonetplus.vulcan.net.pl/powiatwagrowiecki/" target="_blank"><button type="button" class="btn btnM btnA btn-danger btn-rounded btn-lg">E-dziennik <i class="fa-solid fa-calendar-days"></i></button></a>
+              </div>
+        </div>
+    </div>
+
+
+    <div id="aktualnosci"></div>
+
+
+    <section id="events" class="events">
+      <div class="container" data-aos="fade-up">
+          <div editable="rich">
+              <h1 class="display-2 fw-bolder text-center">Nowe wpisy</h1>
+          </div>
+        <div class="row">
+          
+
+          <div class="col-md-14 d-flex align-items-stretch">
+            <div class="card coolCard" style="width: 33%;">
+                <a href="post.html#" id="miniaturaLink"><img class="card-img-top" id="artykulObrazek" src="" alt="brak miniatury"></a>
+                <div class="card-body" style="color: black;">
+                    <p><b id="artykulTytul"></b></p>
+                  <p class="card-text artTxt" id="artykulTekst"></p>
+                </div>
+            </div>
+              <div class="card coolCard" style="width: 33%;">
+                  <a href="post.html#" id="miniaturaLink"><img class="card-img-top" id="artykulObrazek" src="" alt="brak miniatury"></a>
+                  <div class="card-body" style="color: black;">
+                      <p><b id="artykulTytul"></b></p>
+                      <p class="card-text artTxt" id="artykulTekst"></p>
+                  </div>
+              </div>
+              <div class="card coolCard" style="width: 33%;">
+                <a href="post.html#" id="miniaturaLink"><img class="card-img-top" id="artykulObrazek" src="" alt="brak miniatury"></a>
+                <div class="card-body" style="color: black;">
+                    <p><b id="artykulTytul"></b></p>
+                    <p class="card-text artTxt" id="artykulTekst"></p>
+                </div>
+            </div>
+            </div>
+            
+            <a href="aktualnosci.html"><h1 class="display-7 fw-bolder text-center">Zobacz więcej</h1></a>
+
+          </div>
+
+                </div>
+
+    <div id="typy_szkol"></div>
+
+    <div class="container" data-aos="fade-up">
+      <div editable="rich">
+          <h1 class="display-2 fw-bolder text-center">Typy szkół</h1>
+      </div>
+      <br>
+
+    <section id="events" class="events">
+      <div class="container" data-aos="fade-up">
+          <div editable="rich">
+              <h1 class="display-3 fw-bolder text-center">Technikum</h1>
+          </div>
+        <div class="row">
+          
+
+          <div class="col-md-14 d-flex align-items-stretch">
+              <div class="card" style="width: 33%;">
+                  <img class="card-img-top" src="https://assets.entrepreneur.com/content/3x2/2000/20150708172005-coding-working-workspace-apple-macintosh.jpeg?auto=webp&quality=95&crop=16:9&width=675" alt="Card image cap">
+                  <div class="card-body" style="color: black;">
+                      <p><b>Programista</b></p>
+                    <p class="card-text">Miłośnik kodu (i kawy)</p>
+                  </div>
+              </div>
+
+              <div class="card" style="width: 33%;">
+                  <img class="card-img-top" src="https://pix4free.org/assets/library/2021-01-12/originals/laptop_coffee_desk_mobile_notepad.jpg" alt="Card image cap">
+                  <div class="card-body" style="color: black;">
+                      <p><b>Informatyk</b></p>
+                    <p class="card-text">Mistrz w rozumieniu komputera</p>
+                  </div>
+                </div>
+
+                <div class="card" style="width: 33%;">
+                  <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                  <div class="card-body" style="color: black;">
+                      <p><b>Kierunek ?</b></p>
+                    <p class="card-text">???</p>
+                  </div>
+                </div>
+                </div>
+
+
+                <div class="col-md-14 d-flex align-items-stretch">
+                  <div class="card" style="width: 33%;">
+                      <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                      <div class="card-body" style="color: black;">
+                          <p><b>Kierunek ?</b></p>
+                        <p class="card-text">???</p>
+                      </div>
+                    </div>
+                    <div class="card" style="width: 33%;">
+                      <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                      <div class="card-body" style="color: black;">
+                          <p><b>Kierunek ?</b></p>
+                        <p class="card-text">???</p>
+                      </div>
+                    </div>
+                    <div class="card" style="width: 33%;">
+                      <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                      <div class="card-body" style="color: black;">
+                          <p><b>Kierunek ?</b></p>
+                        <p class="card-text">???</p>
+                      </div>
+                    </div>
+                    </div>
+                    
+          </div>
+      </div>
+    </section>
+    <section id="events" class="events">
+      <div class="container" data-aos="fade-up">
+          <div editable="rich">
+              <h1 class="display-3 fw-bolder text-center">Liceum</h1>
+          </div>
+        
+          <div class="col-md-14 d-flex align-items-stretch">
+            <div class="card" style="width: 33%;">
+                <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                <div class="card-body" style="color: black;">
+                    <p><b>Kierunek ?</b></p>
+                  <p class="card-text">???</p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 33%;">
+                <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                <div class="card-body" style="color: black;">
+                    <p><b>Kierunek ?</b></p>
+                  <p class="card-text">???</p>
+                </div>
+              </div>
+
+              <div class="card" style="width: 33%;">
+                <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                <div class="card-body" style="color: black;">
+                    <p><b>Kierunek ?</b></p>
+                  <p class="card-text">???</p>
+                </div>
+              </div>
+              </div>
+          <div class="row">
+            <div class="col-md-14 d-flex align-items-stretch">
+              <div class="card" style="width: 33%;">
+                  <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                  <div class="card-body" style="color: black;">
+                      <p><b>Kierunek ?</b></p>
+                    <p class="card-text">???</p>
+                  </div>
+              </div>
+                </div>
+          </div>
+
+      </div>
+    </section>
+
+
+  <!--  <div editable="rich">
+      <h1 class="display-2 fw-bolder text-center">Osiągnięcia</h1>
+    </div> -->
+    <div editable="rich">
+      <h1 class="display-2 fw-bolder text-center">Dokumenty</h1>
+      <a href="https://zsp2wagrowiec.pl/pliki/patron/historia.pdf" target="_blank"><p class="text-center">Historia szkoły</p></a>
+      <a href="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2019/01/Patron-edited-converted.pdf" target="_blank"><p class="text-center">Patron</p></a>
+      <a href="https://docs.google.com/spreadsheets/d/1WXOmbUDM0tKl5ZjeRIB4u9uMqlUT0Pjz/edit#gid=306564613" target="_blank"><p class="text-center">Podręczniki od roku szkolnego 2022/2023</p></a>
+    </div>
+    <div editable="rich">
+      <h1 class="display-2 fw-bolder text-center">Adres</h1>
+    </div>
+
+    <style>
+      .map-container{
+overflow:hidden;
+padding-bottom:56.25%;
+position:relative;
+height:0;
+}
+.map-container iframe{
+left:0;
+top:0;
+height:100%;
+width:100%;
+position:absolute;
+}
+    </style>
+    <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d737.8909773684533!2d17.202522676340728!3d52.8169103223056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4704786d2dabccf5%3A0xccf9d4ee405cacde!2sZesp%C3%B3%C5%82%20Szk%C3%B3%C5%82%20Ponadgimnazjalnych%20nr%202%20im.%20pp%C5%82k.%20dr.%20S.%20Kuli%C5%84skiego!5e0!3m2!1spl!2spl!4v1668969964896!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="rich">
+      <h1 class="display-2 fw-bolder text-center">Ważne linki</h1>
+      <div class="text-center">
+      <a href="http://www.mkidn.gov.pl/pages/strona-glowna/kultura-i-dziedzictwo/symbole-narodowe.php" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Herb_Polski.svg" width="10%" height="10%" alt="Godło Polski"></a>
+      <a href="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2021/11/skrzynka.png" target="_blank"><img src="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2021/11/skrzynka.png" width="11%" height="11%" alt="skrzynka alarmowa"></a>
+      <a href="https://brpd.gov.pl/" target="_blank"><img src="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2022/04/xsos-dtz-page.jpg.pagespeed.ic.pDaHQ17nCb.webp" width="13%" height="13%" alt="sos"></a>
+      <a href="https://www.wsb.net.pl/" target="_blank"><img src="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2022/03/Wyzsza-Szkola-Bezpieczenstwa-logo-1024x1024.png" width="10%" height="10%" alt="wyzsza szkola bezpieczenstwa"></a>
+      <a href="https://www.put.poznan.pl/" target="_blank"><img src="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2022/03/pp-logo.png" width="10%" height="10%" alt="Politechnika Poznańska"></a>
+    </div>
+  </div>
+
+    <hr>
+    <footer id="footer">
+
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+  
+            <div class="col-lg-4 col-md-6 footer-contact">
+              <h3>Adres</h3>
+              <p>
+                Zespół Szkół Ponadgimnazjalnych nr 2 im. ppłk. dr. S. Kulińskiego<br>
+                Kościuszki 49<br>
+                62-100 Wągrowiec <br><br>
+              </p>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Kontakt</h3>
+              <p>
+                <strong>Telefon:</strong> 67 262 03 47<br>
+                <strong>Email:</strong> zsz2wagr@wp.pl<br>
+              </p>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Szybki dostęp</h3>
+              <p>
+                <a href="https://uonetplus.vulcan.net.pl/powiatwagrowiecki/" target="_blank">E-dziennik</a><br>
+                <a href="https://zsp2wagrowiec.pl/cms/" target="_blank">Oficjalna strona szkoły</a><br>
+                <a href="https://www.youtube.com/@JacekHaja" target="_blank">Jacek Haja YouTube?</a><br>
+              </p>
+            </div>
+            <div class="col-lg-2 col-md-6 footer-newsletter">
+              <h4>Nasze social media:</h4>
+              <p>
+                <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="https://www.facebook.com/people/Zesp%C3%B3%C5%82-Szk%C3%B3%C5%82-nr-2-w-W%C4%85growcu/100063451487568/" target="_blank" role="button">
+                  <i class="fa-brands fa-facebook-f"></i></a>
+                  <a class="btn text-white btn-floating m-1" style="background-color: #333333;" href="https://www.tiktok.com/@zsnr_2" target="_blank" role="button">
+                  <i class="fab fa-tiktok"></i></a>
+                  <a class="btn text-white btn-floating m-1" style="background-color: #dd4b39;" href="https://www.youtube.com/channel/UCiutxe0og69YOmRjYkRg_Fw" target="_blank" role="button">
+                  <i class="fa-brands fa-youtube"></i></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script>
+    $(document).click(function(e) {
+    if (!$(e.target).is('.panel-body')) {
+    $('.collapse').collapse('hide');	    
+  }
+});
+  </script>
+</body>
+</html>

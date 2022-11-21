@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZSP2WĄGROWIEC - Aktualności</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="icon" type="image/x-icon" href="https://zsp2wagrowiec.pl/cms/wp-content/uploads/2022/04/xcropped-Nowe-Logo-ZS2-Final-512-32x32.png.pagespeed.ic.xA0nlNcB3A.webp">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).click(function(e) {
+      if (!$(e.target).is('.panel-body')) {
+      $('.collapse').collapse('hide');	    
+    }
+  });
+    </script>
+    <script>
+      
+      
+      $.ajax({
+          url: "https://zsp2wagrowiec.pl/index.php?rest_route=/wp/v2/posts&per_page=9"
+      })
+      .done(res => {
+       console.log(res);    // dla programisty, potem zostanie usuniete 
+       const tytuly = document.querySelectorAll('[id=tytul]');
+       const miniatury = document.querySelectorAll('[id=miniatura]');
+       const krotkiOpis = document.querySelectorAll('[id=krotkiOpis]');
+       const zobaczWiecej = document.querySelectorAll('[id=zobaczWiecej]');
+       const dataDodania = document.querySelectorAll('[id=dataDodania]');
+       const imgLink = document.querySelectorAll('[id=imgLink]');
+       const path = (document.URL).replace("aktualnosci.html","");
+       for(i=0; i<9;i++){
+          tytuly[i].innerHTML += res[i].title.rendered;
+          krotkiOpis[i].innerHTML += res[i].excerpt.rendered;
+          tytuly[i].setAttribute("href",(path+"post.html#"+(res[i].id)));
+          zobaczWiecej[i].setAttribute("href",(path+"post.html#"+(res[i].id)));
+          dataDodania[i].innerHTML = (res[i].date).substring(0,10);
+          imgLink[i].href = (path+"post.html#"+(res[i].id));
+          miniatury[i].setAttribute("name",res[i].id);
+       }
+      });
+      
+  </script>
+
+  <script>
+     $.ajax({url:"https://zsp2wagrowiec.pl/index.php?rest_route=/wp/v2/media&per_page=50"}).done(res => {
+        const miniatury = document.querySelectorAll('[id=miniatura]');
+        var ctr = 0;
+        var tolerance = 0;
+        for(i=0; i<9;i++){
+          name = miniatury[i].getAttribute("name");
+          if(name==res[ctr].post){
+            miniatury[i].src = res[ctr].media_details.sizes.full.source_url;
+            tolerance=0;
+          }
+          else if(tolerance==5){
+            tolerance=0;
+            ctr--;
+          }
+          else{
+            i--;
+            tolerance++;
+          }
+          ctr++;
+        }
+      });
+  </script>
+<style>
+  a:link{
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDisp" aria-controls="navbarDisp" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarDisp">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                ZSP2Wągrowiec
+              </a>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Wizytówka</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="aktualnosci.html">Aktualności</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://uonetplus.vulcan.net.pl/powiatwagrowiecki/" target="_blank">E-dziennik</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://77.65.52.170/" target="_blank">Platforma Moodle</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      <br>
+
+      <div class="container">
+        <div class="row mb-5">
+        <div class="col-12">
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col-lg-4 mb-4">
+        <div class="entry2 img-thumbnail">
+        <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+        <p id="dataDodania"></p>
+        <div class="excerpt">
+        <h2><a href="single.html" id="tytul"></a></h2>
+        <div class="post-meta align-items-center text-left clearfix">
+        </div>
+        <p id="krotkiOpis"></p>
+        <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+        </div>
+        <div class="row text-center pt-5 border-top">
+        <div class="col-md-12">
+        <div class="custom-pagination">
+        <span>1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <span>...</span>
+        <a href="#">15</a>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        
+        <hr>
+        <footer id="footer">
+
+          <div class="footer-top">
+            <div class="container">
+              <div class="row">
+      
+                <div class="col-lg-4 col-md-6 footer-contact">
+                  <h3>Adres</h3>
+                  <p>
+                    Zespół Szkół Ponadgimnazjalnych nr 2 im. ppłk. dr. S. Kulińskiego<br>
+                    Kościuszki 49<br>
+                    62-100 Wągrowiec <br><br>
+                  </p>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-contact">
+                  <h3>Kontakt</h3>
+                  <p>
+                    <strong>Telefon:</strong> 67 262 03 47<br>
+                    <strong>Email:</strong> zsz2wagr@wp.pl<br>
+                  </p>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-contact">
+                  <h3>Szybki dostęp</h3>
+                  <p>
+                    <a href="https://uonetplus.vulcan.net.pl/powiatwagrowiecki/" target="_blank">E-dziennik</a><br>
+                    <a href="https://zsp2wagrowiec.pl/cms/" target="_blank">Oficjalna strona szkoły</a><br>
+                    <a href="https://www.youtube.com/@JacekHaja" target="_blank">Jacek Haja YouTube?</a><br>
+                  </p>
+                </div>
+                <div class="col-lg-2 col-md-6 footer-newsletter">
+                  <h4>Nasze social media:</h4>
+                  <p>
+                    <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="https://www.facebook.com/people/Zesp%C3%B3%C5%82-Szk%C3%B3%C5%82-nr-2-w-W%C4%85growcu/100063451487568/" target="_blank" role="button">
+                      <i class="fa-brands fa-facebook-f"></i></a>
+                      <a class="btn text-white btn-floating m-1" style="background-color: #333333;" href="https://www.tiktok.com/@zsnr_2" target="_blank" role="button">
+                      <i class="fab fa-tiktok"></i></a>
+                      <a class="btn text-white btn-floating m-1" style="background-color: #dd4b39;" href="https://www.youtube.com/channel/UCiutxe0og69YOmRjYkRg_Fw" target="_blank" role="button">
+                      <i class="fa-brands fa-youtube"></i></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
