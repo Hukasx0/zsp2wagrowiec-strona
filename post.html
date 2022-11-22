@@ -16,16 +16,11 @@
       })
       .done(res => {
        document.title = res[0].title.rendered+" | ZSP2WĄGROWIEC";
-       console.log(res);    // dla programisty, potem zostanie usuniete 
        const tytuly = document.querySelectorAll('[id=tytul]');
        const miniatury = document.querySelectorAll('[id=miniatura]');
        const opis = document.querySelectorAll('[id=opis]');
-      /* const zobaczWiecej = document.querySelectorAll('[id=zobaczWiecej]');
-       const path = (document.URL).replace("aktualnosci.html","");*/
           tytuly[0].innerHTML += res[0].title.rendered;
           opis[0].innerHTML += res[0].content.rendered;
-          /*krotkiOpis[i].innerHTML += res[i].excerpt.rendered;
-          zobaczWiecej[i].setAttribute("href",(path+"post.html#"+(i+1)));*/
       });
 </script>
 <style>
@@ -68,12 +63,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-   <!-- <img id="miniatura" src="" alt="">-->
+              <br>
     <h1 id="tytul" style="text-align: center;"></h1>
     <style>
       .opp p, ol, ul, li, h1, h2, h3{
         text-align: left;
       }
+      @media (max-width: 1200px){
+      .opp img{
+        width: 100%;
+        height: auto;
+      }
+    }
     </style>
     <p id="opis" class="opp"></p>
     </div>

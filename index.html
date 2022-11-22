@@ -14,12 +14,10 @@
                url: "https://zsp2wagrowiec.pl/index.php?rest_route=/wp/v2/posts&per_page=3"
            })
        .done(res =>{
-         console.log(res);
          const tytuly = document.querySelectorAll('[id=artykulTytul]');
          const teksty = document.querySelectorAll('[id=artykulTekst]');
          const obrazki = document.querySelectorAll('[id=artykulObrazek]');
          const miniaturaLink = document.querySelectorAll('[id=miniaturaLink]');
-        // const disp = screen.width>770;
          const path = (document.URL).replace("index.html","");
          for(i=0;i<3;i++){
            tytuly[i].innerHTML += res[i].title.rendered;
@@ -172,7 +170,7 @@ a:link{
             </div>
             </div>
             
-            <a href="aktualnosci.html"><h1 class="display-7 fw-bolder text-center">Zobacz więcej</h1></a>
+            <a href="aktualnosci.html"><h2 class="display fw-bolder text-center">Zobacz więcej</h2></a>
 
           </div>
 
@@ -196,7 +194,7 @@ a:link{
 
           <div class="col-md-14 d-flex align-items-stretch">
               <div class="card" style="width: 33%;">
-                  <img class="card-img-top" src="https://assets.entrepreneur.com/content/3x2/2000/20150708172005-coding-working-workspace-apple-macintosh.jpeg?auto=webp&quality=95&crop=16:9&width=675" alt="Card image cap">
+                  <img style="height: 100%;" class="card-img-top" src="https://assets.entrepreneur.com/content/3x2/2000/20150708172005-coding-working-workspace-apple-macintosh.jpeg?auto=webp&quality=95&crop=16:9&width=675" alt="Card image cap">
                   <div class="card-body" style="color: black;">
                       <p><b>Programista</b></p>
                     <p class="card-text">Miłośnik kodu (i kawy)</p>
@@ -204,7 +202,7 @@ a:link{
               </div>
 
               <div class="card" style="width: 33%;">
-                  <img class="card-img-top" src="https://pix4free.org/assets/library/2021-01-12/originals/laptop_coffee_desk_mobile_notepad.jpg" alt="Card image cap">
+                  <img style="height: 100%;" class="card-img-top" src="https://pix4free.org/assets/library/2021-01-12/originals/laptop_coffee_desk_mobile_notepad.jpg" alt="Card image cap">
                   <div class="card-body" style="color: black;">
                       <p><b>Informatyk</b></p>
                     <p class="card-text">Mistrz w rozumieniu komputera</p>
@@ -212,7 +210,7 @@ a:link{
                 </div>
 
                 <div class="card" style="width: 33%;">
-                  <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                  <img style="height: 100%" class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
                   <div class="card-body" style="color: black;">
                       <p><b>Kierunek ?</b></p>
                     <p class="card-text">???</p>
@@ -223,21 +221,21 @@ a:link{
 
                 <div class="col-md-14 d-flex align-items-stretch">
                   <div class="card" style="width: 33%;">
-                      <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                      <img style="height: 100%;" class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
                       <div class="card-body" style="color: black;">
                           <p><b>Kierunek ?</b></p>
                         <p class="card-text">???</p>
                       </div>
                     </div>
                     <div class="card" style="width: 33%;">
-                      <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                      <img style="height: 100%;" class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
                       <div class="card-body" style="color: black;">
                           <p><b>Kierunek ?</b></p>
                         <p class="card-text">???</p>
                       </div>
                     </div>
                     <div class="card" style="width: 33%;">
-                      <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                      <img style="height: 100%;" class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
                       <div class="card-body" style="color: black;">
                           <p><b>Kierunek ?</b></p>
                         <p class="card-text">???</p>
@@ -256,7 +254,7 @@ a:link{
         
           <div class="col-md-14 d-flex align-items-stretch">
             <div class="card" style="width: 33%;">
-                <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                <img style="height: 100%;" class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
                 <div class="card-body" style="color: black;">
                     <p><b>Kierunek ?</b></p>
                   <p class="card-text">???</p>
@@ -264,7 +262,7 @@ a:link{
             </div>
 
             <div class="card" style="width: 33%;">
-                <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                <img style="height: 100%;" class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
                 <div class="card-body" style="color: black;">
                     <p><b>Kierunek ?</b></p>
                   <p class="card-text">???</p>
@@ -272,7 +270,7 @@ a:link{
               </div>
 
               <div class="card" style="width: 33%;">
-                <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                <img style="height: 100%;" class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
                 <div class="card-body" style="color: black;">
                     <p><b>Kierunek ?</b></p>
                   <p class="card-text">???</p>
@@ -282,7 +280,7 @@ a:link{
           <div class="row">
             <div class="col-md-14 d-flex align-items-stretch">
               <div class="card" style="width: 33%;">
-                  <img class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
+                  <img style="height: 100%;" class="card-img-top" src="https://as1.ftcdn.net/v2/jpg/00/68/94/56/1000_F_68945606_wqroIiHKpPUm9dIiRaQbfewnVKUrtANg.jpg" alt="Card image cap">
                   <div class="card-body" style="color: black;">
                       <p><b>Kierunek ?</b></p>
                     <p class="card-text">???</p>
@@ -294,10 +292,6 @@ a:link{
       </div>
     </section>
 
-
-  <!--  <div editable="rich">
-      <h1 class="display-2 fw-bolder text-center">Osiągnięcia</h1>
-    </div> -->
     <div editable="rich">
       <h1 class="display-2 fw-bolder text-center">Dokumenty</h1>
       <a href="https://zsp2wagrowiec.pl/pliki/patron/historia.pdf" target="_blank"><p class="text-center">Historia szkoły</p></a>

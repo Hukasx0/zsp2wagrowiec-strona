@@ -24,7 +24,6 @@
           url: "https://zsp2wagrowiec.pl/index.php?rest_route=/wp/v2/posts&per_page=9"
       })
       .done(res => {
-       console.log(res);    // dla programisty, potem zostanie usuniete 
        const tytuly = document.querySelectorAll('[id=tytul]');
        const miniatury = document.querySelectorAll('[id=miniatura]');
        const krotkiOpis = document.querySelectorAll('[id=krotkiOpis]');
@@ -104,11 +103,20 @@
   </nav>
       <br>
 
-      <div class="container">
+      <style>
+        .cont .row{
+          display: flex;
+        }
+        .cont .col-lg-4{
+          display: flex;
+        }
+      </style>
+
+      <div class="container cont">
         <div class="row mb-5">
-        <div class="col-12">
-        </div>
-        </div>
+          <div class="col-12">
+          </div>
+          </div>
 
         <div class="row">
         <div class="col-lg-4 mb-4">
@@ -150,33 +158,8 @@
                 </div>
                 </div>
         </div>
-        <div class="col-lg-4 mb-4">
-            <div class="entry2 img-thumbnail">
-              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
-              <p id="dataDodania"></p>
-                <div class="excerpt">
-                <h2><a href="single.html" id="tytul"></a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                </div>
-                <p id="krotkiOpis"></p>
-                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
-                </div>
-                </div>
         </div>
-
-        <div class="col-lg-4 mb-4">
-            <div class="entry2 img-thumbnail">
-              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
-              <p id="dataDodania"></p>
-                <div class="excerpt">
-                <h2><a href="single.html" id="tytul"></a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                </div>
-                <p id="krotkiOpis"></p>
-                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
-                </div>
-                </div>
-        </div>
+        <div class="row">
         <div class="col-lg-4 mb-4">
             <div class="entry2 img-thumbnail">
               <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
@@ -216,6 +199,8 @@
                 </div>
                 </div>
         </div>
+      </div>
+      <div class="row">
         <div class="col-lg-4 mb-4">
             <div class="entry2 img-thumbnail">
               <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
@@ -229,6 +214,33 @@
                 </div>
                 </div>
         </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="entry2 img-thumbnail">
+              <a href="single.html" id="imgLink"><img src="" id="miniatura" alt="brak miniatury" class="img-fluid rounded w-100"></a>
+              <p id="dataDodania"></p>
+                <div class="excerpt">
+                <h2><a href="single.html" id="tytul"></a></h2>
+                <div class="post-meta align-items-center text-left clearfix">
+                </div>
+                <p id="krotkiOpis"></p>
+                <p><a href="#" id="zobaczWiecej">Zobacz więcej</a></p>
+                </div>
+                </div>
+        </div>
+      </div>
         </div>
         <div class="row text-center pt-5 border-top">
         <div class="col-md-12">
